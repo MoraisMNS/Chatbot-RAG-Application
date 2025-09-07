@@ -1,22 +1,23 @@
-import os
+from src.config import OPENAI_API_KEY, PINECONE_INDEX, NAMESPACE
+from src.helper import load_pdf_files, process_documents
 from langchain_openai import OpenAIEmbeddings
 from langchain_pinecone import PineconeVectorStore
-from src.helper import load_pdf_files, process_documents
-from dotenv import load_dotenv
 
-load_dotenv()
+embedding = OpenAIEmbeddings(
+    api_key=OPENAI_API_KEY,
+    model="text-embedding-3-small",
+    dimensions=1024,             
+    disallowed_special=()
+)
 
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
-PINECONE_API_KEY = os.environ.get("PINECONE_API_KEY")
-PINECONE_INDEX = os.environ.get("PINECONE_INDEX")
+docs = load_pdf_files("Docs/")
+splits = process_documents(docs)
 
-embedding_model = OpenAIEmbeddings( api_key=OPENAI_API_KEY, 
-                                   model="text-embedding-3-small", 
-                                    dimensions=1024, 
-                                   disallowed_special=())
+vectorstore = PineconeVectorStore.from_documents(
+    documents=splits,
+    embedding=embedding,
+    index_name=PINECONE_INDEX,
+    namespace=NAMESPACE
+)
 
-pdf_folder_path = "Docs/"
-extracted_documents = load_pdf_files(pdf_folder_path)
-splits = process_documents(extracted_documents)
-
-PineconeVectorStore.from_texts([t.page_content for t in splits], embedding=embedding_model,index_name=PINECONE_INDEX, namespace="test" )
+print(f"Upserted {len(splits)} chunks into {PINECONE_INDEX}/{NAMESPACE}")
