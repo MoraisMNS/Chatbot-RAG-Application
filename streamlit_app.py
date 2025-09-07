@@ -54,7 +54,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Configuration
-FASTAPI_URL = "http://localhost:8000"
+FASTAPI_URL = "http://127.0.0.1:8000"
 
 # Initialize session state
 if 'session_id' not in st.session_state:
@@ -155,6 +155,55 @@ with st.sidebar:
         st.session_state.chat_history = []
         st.success("New session started!")
         st.rerun()
+
+    st.markdown("---")
+    with st.expander("🗂️ Admin: Index Documents", expanded=False):
+        uploaded = st.file_uploader(
+            "Upload a PDF to index",
+            type=["pdf"],
+            key="admin_uploader"
+        )
+
+        col_a, col_b = st.columns(2)
+
+        with col_a:
+            st.button(
+                "Index uploaded (sync)",
+                key="btn_index_sync",
+                disabled=not st.session_state.api_status,
+                on_click=lambda: (
+                    st.session_state.setdefault("admin_msg", None),
+                    (
+                        st.session_state.__setitem__(
+                            "admin_msg",
+                            requests.post(
+                                f"{FASTAPI_URL}/ingest/file",
+                                params={"sync": True},
+                                files={"file": (uploaded.name, uploaded.getvalue(), "application/pdf")}
+                            ).json()
+                        )
+                        if uploaded else st.session_state.__setitem__("admin_msg", "Please choose a PDF first.")
+                    )
+                )
+            )
+
+        with col_b:
+            st.button(
+                "Reindex Docs/ folder (async)",
+                key="btn_reindex_async",
+                disabled=not st.session_state.api_status,
+                on_click=lambda: st.session_state.__setitem__(
+                    "admin_msg",
+                    requests.post(
+                        f"{FASTAPI_URL}/ingest/folder",
+                        params={"path": "Docs/", "sync": False}
+                    ).json()
+                )
+            )
+
+        # Show result / warnings
+        if "admin_msg" in st.session_state and st.session_state.admin_msg:
+            st.write(st.session_state.admin_msg)    
     
     st.markdown("---")
     
