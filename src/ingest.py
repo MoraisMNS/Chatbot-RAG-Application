@@ -17,13 +17,11 @@ def _hash_bytes(data: bytes) -> str:
 
 def _upsert_chunks(chunks: List[Document], doc_id: str, filename: str) -> dict:
     vs = get_vectorstore()
-
-    # Delete previous version of this doc if present; ignore missing namespace
     try:
         vs.delete(filter={"doc_id": doc_id})
     except Exception as e:
         if "namespace not found" not in str(e).lower():
-            pass  # continue anyway
+            pass 
 
     ids = []
     for i, ch in enumerate(chunks):

@@ -11,6 +11,7 @@ python-dotenv
 faiss-cpu
 pypdf
 python-multipart
+streamlit
 # pymongo
 # pinecone-client
 # langchain-mongodb
