@@ -1,4 +1,4 @@
-# 💬 Chatbot RAG Application
+# 💬 Customer support Chatbot
 
 A **Retrieval-Augmented Generation (RAG)** powered chatbot for intelligent customer support, document Q&A, and FAQ generation.  
 This project integrates **Streamlit** for the frontend, **FastAPI** for the backend, **Pinecone** as the vector store, and **OpenAI GPT models** for LLM capabilities.
@@ -7,7 +7,7 @@ This project integrates **Streamlit** for the frontend, **FastAPI** for the back
 
 ## 📌 System Architecture
 
-![System Architecture](system_architecture.png)
+![System Architecture](./system_architecture.png)
 
 ### Components:
 - **User Interface (Streamlit)**
@@ -149,12 +149,9 @@ Chatbot-RAG-Application/
 
 ## 🤝 Contributing
 
-Contributions are welcome!  
-Please fork this repository and submit a pull request.
+Minhaj M.H.A. : EG/2020/4076
+Morais M.N.S. : EG/2020/4077
+Balasooriya B.A.L.M : EG/2020/3838
+Sulaiman M.N. : EG/2020/4342
 
----
 
-## 📜 License
-
-This project is licensed under the MIT License.  
-See [LICENSE](LICENSE) for details.
