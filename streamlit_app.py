@@ -6,7 +6,7 @@ from datetime import datetime
 
 # Page configuration
 st.set_page_config(
-    page_title="Gallery HR Assistant",
+    page_title="Customer Support ChatBot",
     page_icon="🤖",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -121,7 +121,7 @@ def clear_session_history(session_id):
 
 # Sidebar
 with st.sidebar:
-    st.markdown("<h2 class='sidebar-content'>🤖 Gallery HR Assistant</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 class='sidebar-content'>🤖 Customer Support ChatBot</h2>", unsafe_allow_html=True)
     
     # API Status Check
     if st.button("Check API Status", type="secondary"):
@@ -219,15 +219,15 @@ with st.sidebar:
     
     with st.expander("💡 Example Questions"):
         st.markdown("""
-        - What is Gallery HR?
+        - What is this document about?
         - Tell me about company policies
-        - How do I use the Gallery HR system?
+        - Whar are the restrictions?
         - What are the HR guidelines?
         - Show me the user manual information
         """)
 
 # Main content
-st.markdown("<h1 class='main-header'>Gallery HR Assistant Chatbot</h1>", unsafe_allow_html=True)
+st.markdown("<h1 class='main-header'>Customer Support ChatBot</h1>", unsafe_allow_html=True)
 
 # Initial API connection check
 if not st.session_state.api_status:
@@ -265,7 +265,7 @@ if st.session_state.api_status:
         
         with col1:
             user_input = st.text_input(
-                "Ask me anything about Gallery HR:",
+                "Ask me anything about the PDF:",
                 placeholder="Type your question here...",
                 key="user_input",
                 label_visibility="collapsed"
@@ -309,8 +309,8 @@ if st.session_state.api_status:
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        if st.button("What is Gallery HR?"):
-            st.session_state.quick_question = "What is Gallery HR?"
+        if st.button("What is this document about?"):
+            st.session_state.quick_question = "What is this document about?"
             st.rerun()
     
     with col2:
@@ -319,8 +319,8 @@ if st.session_state.api_status:
             st.rerun()
     
     with col3:
-        if st.button("User Manual"):
-            st.session_state.quick_question = "Show me user manual information"
+        if st.button("Company Products"):
+            st.session_state.quick_question = "Show me the company products"
             st.rerun()
 
 else:
