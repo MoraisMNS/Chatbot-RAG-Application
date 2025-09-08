@@ -11,7 +11,7 @@ import time
 
 # Page configuration
 st.set_page_config(
-    page_title="Customer Support AI",
+    page_title="Customer support Chatbot",
     page_icon="💬",
     layout="wide",
     initial_sidebar_state="collapsed"
@@ -621,8 +621,8 @@ if 'initial_check' not in st.session_state:
 # Main Header
 st.markdown("""
 <div class="app-header">
-    <h1 class="app-title">💬 Customer Support AI</h1>
-    <p class="app-subtitle">Intelligent assistance powered by advanced AI technology</p>
+    <h1 class="app-title">💬 Customer support Chatbot</h1>
+    <p class="app-subtitle">Chatbot that pulls answers from company internal documentation</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -1117,7 +1117,7 @@ if st.session_state.api_status and len(st.session_state.chat_history) > 0:
 st.markdown("---")
 st.markdown("""
 <div style='text-align: center; padding: 2rem; color: #64748b; background: #f8fafc; border-radius: 8px; margin-top: 2rem;'>
-    <h4 style='color: #334155; margin-bottom: 1rem;'>💬 Customer Support AI v2.0</h4>
+    <h4 style='color: #334155; margin-bottom: 1rem;'>💬 Customer support Chatbot v2.0</h4>
     <p style='margin-bottom: 1rem; font-size: 0.875rem;'>
         <span style='background: #e0f2fe; color: #0369a1; padding: 0.25rem 0.5rem; border-radius: 12px; margin: 0.25rem; font-size: 0.75rem;'>Document Analysis</span>
         <span style='background: #f0f9ff; color: #0284c7; padding: 0.25rem 0.5rem; border-radius: 12px; margin: 0.25rem; font-size: 0.75rem;'>Intent Detection</span>

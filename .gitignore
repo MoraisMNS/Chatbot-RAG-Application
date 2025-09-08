@@ -164,6 +164,7 @@ cython_debug/
 **/.env.*
 # keep a template
 !.env.example
+/rag_env
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
