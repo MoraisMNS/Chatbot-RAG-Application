@@ -7,7 +7,10 @@ This project integrates **Streamlit** for the frontend, **FastAPI** for the back
 
 ## 📌 System Architecture
 
-![System Architecture](./system_architecture.png)
+<p align="center">
+  <img src="system_architecture.png" alt="Cloud Architecture" width="750"/>
+</p>
+
 
 ### Components:
 - **User Interface (Streamlit)**
