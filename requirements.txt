@@ -15,3 +15,8 @@ streamlit
 # pymongo
 # pinecone-client
 # langchain-mongodb
+fastapi
+uvicorn
+plotly
+langchain
+langchain-community
