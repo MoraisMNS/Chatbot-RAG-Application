@@ -154,7 +154,14 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+# Environment files
 .env
+*.env
+.env.*
+**/.env
+**/.env.*
+# keep a template
+!.env.example
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
